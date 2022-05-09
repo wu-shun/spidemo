@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springboot-keycloak
+keycloak:
+  realm: ws_test #客户端所在的realm
+  auth-server-url: http://localhost:8080/auth #keycloak授权服务器地址
+  resource: client_test_001 #客户端名称
+  public-client: true #声明为一个公开的客户端
+  security-constraints:
+    - auth-roles:
+        - role_test_001
+      security-collections:
+        - name: hello
+          patterns:
+            - "/hello/world"
